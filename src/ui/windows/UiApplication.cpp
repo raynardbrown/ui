@@ -10,9 +10,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "UiApplication.h"
-
 #include <windows.h>
+
+#include "ui/UiApplication.h"
 
 /* static */ int UiApplication::run(Window * window)
 {
