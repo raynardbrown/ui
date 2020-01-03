@@ -10,7 +10,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "UiApplication.h"
+#include "ui/UiApplication.h"
 
 UiApplication::UiApplication(int argc, char **argv)
 {
