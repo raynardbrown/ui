@@ -10,8 +10,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#ifndef IDMANAGER_H_
-#define IDMANAGER_H_
+#ifndef UI_PRIVATE_IDMANAGER_H_
+#define UI_PRIVATE_IDMANAGER_H_
 
 #include <queue>
 
@@ -52,4 +52,4 @@ class IdManager
 
     std::queue<int> returnedIds;
 };
-#endif /* IDMANAGER_H_ */
+#endif /* UI_PRIVATE_IDMANAGER_H_ */
