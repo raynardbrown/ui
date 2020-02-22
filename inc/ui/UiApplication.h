@@ -10,8 +10,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#ifndef UIAPPLICATION_H_
-#define UIAPPLICATION_H_
+#ifndef UI_UIAPPLICATION_H_
+#define UI_UIAPPLICATION_H_
 
 class Window;
 
@@ -27,4 +27,4 @@ class UiApplication
 
     static int run(Window * window);
 };
-#endif /* UIAPPLICATION_H_ */
+#endif /* UI_UIAPPLICATION_H_ */
