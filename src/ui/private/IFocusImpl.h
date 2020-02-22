@@ -10,8 +10,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#ifndef IFOCUSIMPL_H_
-#define IFOCUSIMPL_H_
+#ifndef UI_PRIVATE_IFOCUSIMPL_H_
+#define UI_PRIVATE_IFOCUSIMPL_H_
 
 class IFocusImpl
 {
@@ -31,4 +31,4 @@ class IFocusImpl
 
     virtual void setFocus() = 0;
 };
-#endif /* IFOCUSIMPL_H_ */
+#endif /* UI_PRIVATE_IFOCUSIMPL_H_ */
