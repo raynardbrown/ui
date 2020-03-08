@@ -55,11 +55,7 @@ class UiComponentPrivate
 
     std::auto_ptr<Color> backgroundColor;
 
-    std::auto_ptr<Color> systemBackgroundColor;
-
     std::auto_ptr<Color> foregroundColor;
-
-    std::auto_ptr<Color> systemForegroundColor;
 
     // un-owned
     UiComponent * parent;
