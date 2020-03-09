@@ -95,6 +95,9 @@ class UiComponentPrivate
     // un-owned
     UiComponent * thisUiComponent;
 
+    virtual bool isEnabled() const;
+    virtual void setEnabled(bool enabled);
+
     virtual void initChildFocusImpl(UiComponent * parentUiComponent,
                                     UiComponent * childUiComponent,
                                     UiComponentPrivate * childUiComponentImpl);
