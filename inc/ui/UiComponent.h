@@ -256,8 +256,6 @@ class UiComponent : public IDrawable
 
     virtual void postCreate();
 
-    virtual void initializeBackgroundColor();
-
     virtual bool isParentValid() const;
 
     void initializeChildren();
