@@ -86,7 +86,7 @@ class UiComponentPrivate
     // un-owned
     TopLevelWindow * topLevelWindow;
 
-    std::auto_ptr<IdManager> idManager;
+    boost::shared_ptr<IdManager> idManager;
 
     std::vector<UiComponent *> uiComponentChildren;
 
