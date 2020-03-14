@@ -52,6 +52,8 @@ class Label : public UiComponent
 
     virtual void internalCreate();
 
+    virtual void initializeEventHandlers();
+
     virtual void calculateInternalPreferredSize();
 
     Label(LabelPrivate& d);
