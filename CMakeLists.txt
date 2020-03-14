@@ -15,13 +15,14 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/inc
 set(Sources src/UiApplication.cpp)
 
 if (MSVC)
-    add_compile_options(-Zi 
+    add_compile_options(-Zi
                         -W4
                         -EHsc
                         -D_CRT_SECURE_NO_WARNINGS
                         -DSTRICT
                         -DUNICODE
-                        -D_UNICODE)
+                        -D_UNICODE
+                        -DNOMINMAX)
 
     set(Sources_Windows src/windows/UiApplication.cpp)
     
