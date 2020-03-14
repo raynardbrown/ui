@@ -256,6 +256,8 @@ class UiComponent : public IDrawable
 
     virtual void postCreate();
 
+    virtual void initializeEventHandlers();
+
     virtual bool isParentValid() const;
 
     void initializeChildren();
