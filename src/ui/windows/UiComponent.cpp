@@ -282,11 +282,6 @@ void UiComponent::internalPostCreate()
   doLayout();
 }
 
-void UiComponent::initializeBackgroundColor()
-{
-
-}
-
 IDrawableSurface * UiComponent::getDrawableSurface() const
 {
   return dRoot->drawableSurface;
@@ -341,9 +336,6 @@ void UiComponent::initialize()
   }
 
   create();
-
-  // Set up background color
-  initializeBackgroundColor();
 
   initializeMenu();
 
