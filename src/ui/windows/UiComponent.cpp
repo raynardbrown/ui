@@ -282,6 +282,11 @@ void UiComponent::internalPostCreate()
   doLayout();
 }
 
+void UiComponent::initializeEventHandlers()
+{
+
+}
+
 IDrawableSurface * UiComponent::getDrawableSurface() const
 {
   return dRoot->drawableSurface;
@@ -289,6 +294,9 @@ IDrawableSurface * UiComponent::getDrawableSurface() const
 
 void UiComponent::initialize()
 {
+  // Set up event handlers
+  initializeEventHandlers();
+
   internalCreate();
 
   bool isTopLevelWindow = false;
