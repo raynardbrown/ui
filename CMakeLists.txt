@@ -9,8 +9,9 @@ if(NOT Boost_FOUND)
   message(FATAL_ERROR "boost not found")
 endif()
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/inc
-                    ${Boost_INCLUDE_DIRS})
+set(Headers "")
+list(APPEND Headers ${CMAKE_CURRENT_SOURCE_DIR}/inc)
+list(APPEND Headers ${Boost_INCLUDE_DIRS})
 
 set(Sources src/UiApplication.cpp)
 
@@ -33,3 +34,5 @@ else()
 endif()
 
 add_library(${PROJECT_NAME} ${Sources})
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${Headers})
