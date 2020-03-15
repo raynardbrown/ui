@@ -58,6 +58,14 @@ endif()
 
 list(APPEND Headers ${GRAPHICS_PRIVATE_INCLUDE})
 
+find_path(UI_LAYOUT_INCLUDE NAMES ui/Layout/ILayout.h PATH_SUFFIXES ui_layout/inc)
+
+if(NOT UI_LAYOUT_INCLUDE)
+  message(FATAL_ERROR "ui layout headers not found")
+endif()
+
+list(APPEND Headers ${UI_LAYOUT_INCLUDE})
+
 add_library(${PROJECT_NAME} ${Sources})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${Headers})
