@@ -11,6 +11,7 @@ endif()
 
 set(Headers "")
 list(APPEND Headers ${CMAKE_CURRENT_SOURCE_DIR}/inc)
+list(APPEND Headers ${CMAKE_CURRENT_SOURCE_DIR}/src)
 list(APPEND Headers ${Boost_INCLUDE_DIRS})
 
 set(Sources src/UiApplication.cpp)
