@@ -42,6 +42,22 @@ endif()
 
 list(APPEND Headers ${STRING_EXTRAS_INCLUDE})
 
+find_path(GRAPHICS_INCLUDE NAMES graphics/Font.h PATH_SUFFIXES graphics/inc)
+
+if(NOT GRAPHICS_INCLUDE)
+  message(FATAL_ERROR "graphics headers not found")
+endif()
+
+list(APPEND Headers ${GRAPHICS_INCLUDE})
+
+find_path(GRAPHICS_PRIVATE_INCLUDE NAMES graphics/private/windows/FontContext.h PATH_SUFFIXES graphics/src)
+
+if(NOT GRAPHICS_PRIVATE_INCLUDE)
+  message(FATAL_ERROR "graphics private headers not found")
+endif()
+
+list(APPEND Headers ${GRAPHICS_PRIVATE_INCLUDE})
+
 add_library(${PROJECT_NAME} ${Sources})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${Headers})
