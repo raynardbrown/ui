@@ -34,6 +34,14 @@ else()
     message(FATAL_ERROR "compiler not supported")
 endif()
 
+find_path(STRING_EXTRAS_INCLUDE NAMES string/extras/CharacterEncoder.h PATH_SUFFIXES string_extras/inc)
+
+if(NOT STRING_EXTRAS_INCLUDE)
+  message(FATAL_ERROR "string extras headers not found")
+endif()
+
+list(APPEND Headers ${STRING_EXTRAS_INCLUDE})
+
 add_library(${PROJECT_NAME} ${Sources})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${Headers})
