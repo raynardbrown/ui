@@ -27,7 +27,8 @@ if (MSVC)
                         -D_UNICODE
                         -DNOMINMAX)
 
-    set(Sources_Windows src/ui/windows/UiApplication.cpp)
+    set(Sources_Windows src/ui/windows/DefaultFocusImpl.cpp
+                        src/ui/windows/UiApplication.cpp)
     
     list(APPEND Sources ${Sources_Windows})
 else()
