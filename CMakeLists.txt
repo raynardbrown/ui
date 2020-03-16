@@ -28,7 +28,8 @@ if (MSVC)
                         -DNOMINMAX)
 
     set(Sources_Windows src/ui/windows/DefaultFocusImpl.cpp
-                        src/ui/windows/UiApplication.cpp)
+                        src/ui/windows/UiApplication.cpp
+                        src/ui/windows/UiComponentDrawableSurface.cpp)
     
     list(APPEND Sources ${Sources_Windows})
 else()
