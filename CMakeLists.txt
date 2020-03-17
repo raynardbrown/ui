@@ -15,7 +15,8 @@ list(APPEND Headers ${CMAKE_CURRENT_SOURCE_DIR}/src)
 list(APPEND Headers ${Boost_INCLUDE_DIRS})
 
 set(Sources src/ui/IdManager.cpp
-            src/ui/UiApplication.cpp)
+            src/ui/UiApplication.cpp
+            src/ui/UiComponent.cpp)
 
 if (MSVC)
     add_compile_options(-Zi
@@ -29,6 +30,7 @@ if (MSVC)
 
     set(Sources_Windows src/ui/windows/DefaultFocusImpl.cpp
                         src/ui/windows/UiApplication.cpp
+                        src/ui/windows/UiComponent.cpp
                         src/ui/windows/UiComponentDrawableSurface.cpp)
     
     list(APPEND Sources ${Sources_Windows})
