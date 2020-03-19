@@ -14,7 +14,8 @@ list(APPEND Headers ${CMAKE_CURRENT_SOURCE_DIR}/inc)
 list(APPEND Headers ${CMAKE_CURRENT_SOURCE_DIR}/src)
 list(APPEND Headers ${Boost_INCLUDE_DIRS})
 
-set(Sources src/ui/IdManager.cpp
+set(Sources src/ui/Button.cpp 
+            src/ui/IdManager.cpp
             src/ui/UiApplication.cpp
             src/ui/UiComponent.cpp)
 
@@ -28,7 +29,8 @@ if (MSVC)
                         -D_UNICODE
                         -DNOMINMAX)
 
-    set(Sources_Windows src/ui/windows/DefaultFocusImpl.cpp
+    set(Sources_Windows src/ui/windows/Button.cpp
+                        src/ui/windows/DefaultFocusImpl.cpp
                         src/ui/windows/UiApplication.cpp
                         src/ui/windows/UiComponent.cpp
                         src/ui/windows/UiComponentDrawableSurface.cpp)
