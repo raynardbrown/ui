@@ -31,6 +31,7 @@ if (MSVC)
 
     set(Sources_Windows src/ui/windows/Button.cpp
                         src/ui/windows/DefaultFocusImpl.cpp
+                        src/ui/windows/Menu.cpp
                         src/ui/windows/MenuBar.cpp
                         src/ui/windows/UiApplication.cpp
                         src/ui/windows/UiComponent.cpp
