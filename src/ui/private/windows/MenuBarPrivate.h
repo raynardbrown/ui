@@ -29,6 +29,8 @@ class MenuBarPrivate : public UiComponentPrivate
 
     virtual ~MenuBarPrivate();
 
+    void initializeMenu(MenuBar * menuBar, Menu * menu);
+
     std::vector<Menu *> menus;
 };
 #endif /* UI_PRIVATE_WINDOWS_MENUBARPRIVATE_H_ */
