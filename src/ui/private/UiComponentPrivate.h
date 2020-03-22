@@ -105,8 +105,5 @@ class UiComponentPrivate
     void updateClientAreaDimensions(int width, int height);
 
     void updateWindowAreaDimensions(int width, int height);
-
-    void initializeBackgroundColorHelper(const wchar_t * className,
-                                         void * reservedData);
 };
 #endif /* UI_PRIVATE_UICOMPONENTPRIVATE_H_ */
