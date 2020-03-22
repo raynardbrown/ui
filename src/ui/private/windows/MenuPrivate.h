@@ -19,6 +19,7 @@
 
 #include "ui/private/UiComponentPrivate.h"
 
+class Menu;
 class MenuItem;
 
 class MenuPrivate : public UiComponentPrivate
@@ -28,6 +29,8 @@ class MenuPrivate : public UiComponentPrivate
     MenuPrivate(const std::string& text);
 
     virtual ~MenuPrivate();
+
+    void initializeMenuItem(Menu * menu, MenuItem * menuItem);
 
     // the menu text
     std::string text;
