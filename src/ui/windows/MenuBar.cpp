@@ -38,6 +38,14 @@ MenuBarPrivate::~MenuBarPrivate()
   }
 }
 
+void MenuBarPrivate::initializeMenu(MenuBar * menuBar, Menu * menu)
+{
+  menu->setParent(menuBar);
+  menu->dRoot->topLevelWindow = menuBar->getTopLevelWindow();
+  menu->dRoot->idManager = menuBar->dRoot->idManager;
+  menu->initialize();
+}
+
 MenuBar::MenuBar()
 :UiComponent(*new MenuBarPrivate())
 {
@@ -62,10 +70,7 @@ void MenuBar::addMenu(Menu * menu)
 
   if(isInitialized())
   {
-    menu->setParent(this);
-    menu->dRoot->topLevelWindow = getTopLevelWindow();
-    menu->dRoot->idManager = dRoot->idManager;
-    menu->initialize();
+    d->initializeMenu(this, menu);
   }
 }
 
@@ -117,10 +122,8 @@ void MenuBar::internalCreate()
   for(std::size_t i = 0; i < d->menus.size(); ++i)
   {
     Menu * menu = d->menus[i];
-    menu->setParent(this);
-    menu->dRoot->topLevelWindow = getTopLevelWindow();
-    menu->dRoot->idManager = dRoot->idManager;
-    menu->initialize();
+
+    d->initializeMenu(this, menu);
   }
 }
 
