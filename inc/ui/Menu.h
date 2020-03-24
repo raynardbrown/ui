@@ -69,5 +69,6 @@ class Menu : public UiComponent
 
     // allow menu item to access menu protected bits
     friend class MenuItem;
+    friend class MenuItemPrivate;
 };
 #endif /* UI_MENU_H_ */
