@@ -34,6 +34,8 @@ class MenuItemPrivate : public UiComponentPrivate
 
     virtual void setEnabled(bool enabled);
 
+    void initializeSubMenu(MenuItem * menuItem, Menu * subMenu);
+
     std::string menuItemtext;
 
     bool checked;
