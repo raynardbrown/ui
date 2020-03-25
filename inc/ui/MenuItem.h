@@ -110,5 +110,7 @@ class MenuItem : public UiComponent
     friend class Menu;
 
     friend class MenuPrivate;
+
+    friend class MenuItemPrivate;
 };
 #endif /* UI_MENUITEM_H_ */
