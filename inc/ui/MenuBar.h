@@ -52,6 +52,8 @@ class MenuBar : public UiComponent
     // allow top level window to access the protected bits of menu bar
     friend class TopLevelWindow;
 
+    friend class TopLevelWindowPrivate;
+
     friend class MenuBarPrivate;
 };
 #endif /* UI_MENUBAR_H_ */
