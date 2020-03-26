@@ -40,6 +40,9 @@ class TopLevelWindowPrivate : public UiComponentPrivate
      */
     void setTopLevelWindow(TopLevelWindow * window);
 
+    void initializeMenuBar(TopLevelWindow * topLevelWindow,
+                           MenuBar * menubar);
+
     std::auto_ptr<MenuBar> menuBar;
 
     /**
