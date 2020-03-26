@@ -63,5 +63,7 @@ class TopLevelWindow : public UiComponent
     TopLevelWindow(TopLevelWindowPrivate& d);
 
     virtual void initializeMenu();
+
+    friend class TopLevelWindowPrivate;
 };
 #endif /* UI_TOPLEVELWINDOW_H_ */
