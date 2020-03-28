@@ -38,7 +38,8 @@ if (MSVC)
                         src/ui/windows/TopLevelWindow.cpp
                         src/ui/windows/UiApplication.cpp
                         src/ui/windows/UiComponent.cpp
-                        src/ui/windows/UiComponentDrawableSurface.cpp)
+                        src/ui/windows/UiComponentDrawableSurface.cpp
+                        src/ui/windows/WM_CTLCOLORSTATIC_MessageHandler.cpp)
     
     list(APPEND Sources ${Sources_Windows})
 else()
