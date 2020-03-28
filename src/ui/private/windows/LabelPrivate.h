@@ -27,6 +27,8 @@ class UiComponent;
 
 class AbstractColorChangeObserver;
 
+class WM_CTLCOLORSTATIC_MessageHandler;
+
 class LabelPrivate : public UiComponentPrivate
 {
   public:
@@ -39,6 +41,8 @@ class LabelPrivate : public UiComponentPrivate
 
     void onInternalColorChange(UiComponent * uiComponent,
                                boost::shared_ptr<Graphics> graphics);
+
+    WM_CTLCOLORSTATIC_MessageHandler * getWM_CTLCOLORSTATIC_MessageHandler(Label * thisLabel);
 
     std::string text;
     DWORD styles;
