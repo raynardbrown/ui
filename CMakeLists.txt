@@ -34,6 +34,7 @@ if (MSVC)
                         src/ui/windows/Menu.cpp
                         src/ui/windows/MenuBar.cpp
                         src/ui/windows/MenuItem.cpp
+                        src/ui/windows/TopLevelWindow.cpp
                         src/ui/windows/UiApplication.cpp
                         src/ui/windows/UiComponent.cpp
                         src/ui/windows/UiComponentDrawableSurface.cpp)
