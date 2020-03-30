@@ -15,7 +15,7 @@
 
 #include "graphics/Color.h"
 
-#include "ui/uiComponent.h"
+#include "ui/UiComponent.h"
 
 #include "ui/private/windows/UiComponentContext.h"
 
@@ -24,7 +24,8 @@
 #include "ui/private/windows/WM_CTLCOLORSTATIC_MessageHandler.h"
 
 WM_CTLCOLORSTATIC_MessageHandler::WM_CTLCOLORSTATIC_MessageHandler()
-:brush(nullptr)
+:IMessageHandler(),
+ brush(nullptr)
 {
 }
 
