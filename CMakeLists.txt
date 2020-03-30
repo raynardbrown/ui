@@ -17,7 +17,8 @@ list(APPEND Headers ${Boost_INCLUDE_DIRS})
 set(Sources src/ui/Button.cpp 
             src/ui/IdManager.cpp
             src/ui/UiApplication.cpp
-            src/ui/UiComponent.cpp)
+            src/ui/UiComponent.cpp
+            src/ui/Window.cpp)
 
 if (MSVC)
     add_compile_options(-Zi
@@ -39,6 +40,7 @@ if (MSVC)
                         src/ui/windows/UiApplication.cpp
                         src/ui/windows/UiComponent.cpp
                         src/ui/windows/UiComponentDrawableSurface.cpp
+                        src/ui/windows/Window.cpp
                         src/ui/windows/WM_CLOSE_MessageHandler.cpp
                         src/ui/windows/WM_CTLCOLORSTATIC_MessageHandler.cpp)
     
