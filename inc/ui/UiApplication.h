@@ -26,5 +26,7 @@ class UiApplication
     ~UiApplication();
 
     static int run(Window * window);
+
+    static void quit();
 };
 #endif /* UI_UIAPPLICATION_H_ */
