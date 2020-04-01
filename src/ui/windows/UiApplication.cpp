@@ -39,3 +39,8 @@
 
   return static_cast<int>(msg.wParam);
 }
+
+/* static */ void UiApplication::quit()
+{
+  ::PostQuitMessage(0);
+}
