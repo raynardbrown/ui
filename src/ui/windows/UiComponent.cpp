@@ -391,6 +391,8 @@ void UiComponent::addUiComponent(UiComponent * childUiComponent)
     if(!childUiComponent->isInitialized())
     {
       initializeChild(childUiComponent);
+
+      invalidateLayout();
     }
   }
 }
