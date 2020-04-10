@@ -26,7 +26,9 @@ class Graphics;
 class UiComponent;
 
 class AbstractColorChangeObserver;
+class AbstractUiEventObserver;
 
+class WM_COMMAND_MessageHandler;
 class WM_CTLCOLORSTATIC_MessageHandler;
 
 class LabelPrivate : public UiComponentPrivate
@@ -42,7 +44,10 @@ class LabelPrivate : public UiComponentPrivate
     void onInternalColorChange(UiComponent * uiComponent,
                                boost::shared_ptr<Graphics> graphics);
 
+    WM_COMMAND_MessageHandler * getWM_COMMAND_MessageHandler(Label * thisLabel);
     WM_CTLCOLORSTATIC_MessageHandler * getWM_CTLCOLORSTATIC_MessageHandler(Label * thisLabel);
+
+    void setClickObserver(AbstractUiEventObserver * uiEventObserver);
 
     std::string text;
     DWORD styles;
@@ -50,5 +55,6 @@ class LabelPrivate : public UiComponentPrivate
 
     AbstractColorChangeObserver * colorChangeObserver;
     AbstractColorChangeObserver * internalColorChangeObserver;
+    AbstractUiEventObserver * labelClickObserver;
 };
 #endif /* UI_PRIVATE_WINDOWS_LABELPRIVATE_H_ */
