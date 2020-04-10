@@ -42,6 +42,7 @@ if (MSVC)
                         src/ui/windows/UiComponentDrawableSurface.cpp
                         src/ui/windows/Window.cpp
                         src/ui/windows/WM_CLOSE_MessageHandler.cpp
+                        src/ui/windows/WM_COMMAND_MessageHandler.cpp
                         src/ui/windows/WM_CTLCOLORSTATIC_MessageHandler.cpp)
     
     list(APPEND Sources ${Sources_Windows})
