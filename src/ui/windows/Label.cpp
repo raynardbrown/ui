@@ -23,6 +23,7 @@
 #include "ui/TopLevelWindow.h"
 
 #include "ui/event/ColorChangeObserver.h"
+#include "ui/event/AbstractUiEventObserver.h"
 
 #include "ui/layout/UiComponentSize.h"
 
@@ -32,6 +33,7 @@
 #include "ui/private/windows/LabelPrivate.h"
 
 #include "ui/private/windows/IMessageHandler.h"
+#include "ui/private/windows/WM_COMMAND_MessageHandler.h"
 #include "ui/private/windows/WM_CTLCOLORSTATIC_MessageHandler.h"
 
 #include "ui/Label.h"
@@ -44,7 +46,8 @@ LabelPrivate::LabelPrivate(const std::string& text,
  styles(WS_CHILD | WS_VISIBLE | SS_NOTIFY),
  thisLabel(NULL),
  colorChangeObserver(nullptr),
- internalColorChangeObserver(nullptr)
+ internalColorChangeObserver(nullptr),
+ labelClickObserver(nullptr)
 {
   if(acceleratorInterpretation == Label::DisableAcceleratorInterpretation)
   {
@@ -95,6 +98,20 @@ void LabelPrivate::onInternalColorChange(UiComponent * uiComponent,
   }
 }
 
+WM_COMMAND_MessageHandler * LabelPrivate::getWM_COMMAND_MessageHandler(Label * thisLabel)
+{
+  TopLevelWindow * topLevelWindow = thisLabel->getTopLevelWindow();
+
+  std::auto_ptr<IMessageHandler> messageHandler(new WM_COMMAND_MessageHandler());
+
+  IMessageHandler * registeredMessageHandler = topLevelWindow->getTopLevelWindowContext()->initWin32MessageHandler(messageHandler);
+
+  // we know that the type of IMessageHandler is a WM_COMMAND_MessageHandler
+  WM_COMMAND_MessageHandler * wm_command_messageHandler = static_cast<WM_COMMAND_MessageHandler *>(registeredMessageHandler);
+
+  return wm_command_messageHandler;
+}
+
 WM_CTLCOLORSTATIC_MessageHandler * LabelPrivate::getWM_CTLCOLORSTATIC_MessageHandler(Label * thisLabel)
 {
   TopLevelWindow * topLevelWindow = thisLabel->getTopLevelWindow();
@@ -107,6 +124,30 @@ WM_CTLCOLORSTATIC_MessageHandler * LabelPrivate::getWM_CTLCOLORSTATIC_MessageHan
   WM_CTLCOLORSTATIC_MessageHandler * wm_ctlcolorstatic_messageHandler = static_cast<WM_CTLCOLORSTATIC_MessageHandler *>(registeredMessageHandler);
 
   return wm_ctlcolorstatic_messageHandler;
+}
+
+void LabelPrivate::setClickObserver(AbstractUiEventObserver * uiEventObserver)
+{
+  WM_COMMAND_MessageHandler * wm_command_messageHandler = getWM_COMMAND_MessageHandler(thisLabel);
+
+  // look up the notification code to see if there is already a map registered, if a map is registered,
+  // use it, if not create a new map for the notification code (STN_CLICKED)
+
+  boost::unordered_map<int, boost::unordered_map<int, std::pair<AbstractUiEventObserver *, UiComponent *> > >::iterator it;
+
+  const int Win32NotificationCode = STN_CLICKED;
+
+  it = wm_command_messageHandler->win32CommandCallbacks.find(Win32NotificationCode);
+
+  // check to see if a  map already exists and if not add it one
+  if(it == wm_command_messageHandler->win32CommandCallbacks.end())
+  {
+    wm_command_messageHandler->win32CommandCallbacks[Win32NotificationCode][thisLabel->getId()] = std::pair<AbstractUiEventObserver *, UiComponent *>(uiEventObserver, thisLabel);
+  }
+  else
+  {
+    it->second[thisLabel->getId()] = std::pair<AbstractUiEventObserver *, UiComponent *>(uiEventObserver, thisLabel);
+  }
 }
 
 Label::Label(const std::string& text,
@@ -209,6 +250,20 @@ void Label::setColorChangeObserver(AbstractColorChangeObserver * colorChangeObse
   }
 }
 
+void Label::setClickObserver(AbstractUiEventObserver * uiEventObserver)
+{
+  LabelPrivate * d = static_cast<LabelPrivate *>(dRoot.get());
+
+  delete d->labelClickObserver;
+
+  d->labelClickObserver = uiEventObserver;
+
+  if(isInitialized())
+  {
+    d->setClickObserver(uiEventObserver);
+  }
+}
+
 void Label::initializeEventHandlers()
 {
   LabelPrivate * d = static_cast<LabelPrivate *>(dRoot.get());
@@ -226,6 +281,11 @@ void Label::initializeEventHandlers()
   else if(d->colorChangeObserver)
   {
     wm_ctlcolorstatic_messageHandler->win32MessageCallbacks[getId()] = std::pair<AbstractColorChangeObserver *, UiComponent *>(d->colorChangeObserver, this);
+  }
+
+  if(d->labelClickObserver)
+  {
+    d->setClickObserver(d->labelClickObserver);
   }
 }
 
