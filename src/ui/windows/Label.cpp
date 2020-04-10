@@ -190,15 +190,15 @@ void Label::setColorChangeObserver(AbstractColorChangeObserver * colorChangeObse
 {
   LabelPrivate * d = static_cast<LabelPrivate *>(dRoot.get());
 
+  delete d->colorChangeObserver;
+
+  d->colorChangeObserver = colorChangeObserver;
+
   if(isInitialized())
   {
     WM_CTLCOLORSTATIC_MessageHandler * wm_ctlcolorstatic_messageHandler = d->getWM_CTLCOLORSTATIC_MessageHandler(this);
 
     wm_ctlcolorstatic_messageHandler->win32MessageCallbacks[getId()] = std::pair<AbstractColorChangeObserver *, UiComponent *>(d->colorChangeObserver, this);
-  }
-  else
-  {
-    d->colorChangeObserver = colorChangeObserver;
   }
 
   if(d->internalColorChangeObserver)
