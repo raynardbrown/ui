@@ -16,6 +16,7 @@
 #include "ui/UiComponent.h"
 
 class AbstractColorChangeObserver;
+class AbstractUiEventObserver;
 
 class LabelPrivate;
 
@@ -47,6 +48,8 @@ class Label : public UiComponent
     void setText(const std::string& text);
 
     void setColorChangeObserver(AbstractColorChangeObserver * colorChangeObserver);
+
+    void setClickObserver(AbstractUiEventObserver * uiEventObserver);
 
   protected:
 
