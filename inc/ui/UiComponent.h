@@ -133,6 +133,11 @@ class UiComponent : public IDrawable
      */
     void setFocus();
 
+    /**
+     * Tell this UiComponent to redraw itself when there is idle time.
+     */
+    void redrawUiComponentLater();
+
     virtual UiComponent * getParent() const;
 
     void setParent(UiComponent * parent);
