@@ -248,6 +248,16 @@ void UiComponent::setVisible(bool visible)
   }
 }
 
+void UiComponent::redrawUiComponentLater()
+{
+  if(isInitialized())
+  {
+    ::InvalidateRect(getUiComponentContext()->hwnd,
+                     nullptr,                       // Invalidate the entire client area so that it must be redrawn.
+                     FALSE);                        // Do not erase the background
+  }
+}
+
 bool UiComponent::isParentValid() const
 {
   return getParent() != nullptr &&
