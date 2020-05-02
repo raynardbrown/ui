@@ -12,14 +12,6 @@
 
 #include "ui/UiApplication.h"
 
-UiApplication::UiApplication(int argc, char **argv)
-{
-}
-
-UiApplication::UiApplication()
-{
-}
-
 UiApplication::~UiApplication()
 {
 }
