@@ -14,7 +14,7 @@
 
 #include "ui/UiApplication.h"
 
-/* static */ int UiApplication::run(Window * window)
+int UiApplication::run(Window * window)
 {
   MSG msg;
 
