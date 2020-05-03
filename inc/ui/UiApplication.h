@@ -25,7 +25,7 @@ class UiApplication
 
     ~UiApplication();
 
-    static int run(Window * window);
+    int run(Window * window);
 
     static void quit();
 };
