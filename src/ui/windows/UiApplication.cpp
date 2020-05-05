@@ -14,6 +14,16 @@
 
 #include "ui/UiApplication.h"
 
+UiApplication::UiApplication(int argc, char ** argv)
+{
+
+}
+
+UiApplication::UiApplication()
+{
+
+}
+
 int UiApplication::run(Window * window)
 {
   MSG msg;
