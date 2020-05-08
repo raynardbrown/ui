@@ -13,6 +13,8 @@
 #ifndef UI_PRIVATE_LINUX_UICOMPONENTCONTEXT_H_
 #define UI_PRIVATE_LINUX_UICOMPONENTCONTEXT_H_
 
+#include <gtk/gtk.h>
+
 class UiComponentContext
 {
   public:
@@ -20,5 +22,7 @@ class UiComponentContext
     UiComponentContext();
 
     ~UiComponentContext();
+
+    GtkWidget * widget;
 };
 #endif /* UI_PRIVATE_LINUX_UICOMPONENTCONTEXT_H_ */
