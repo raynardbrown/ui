@@ -10,6 +10,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#include <gtk/gtk.h>
+
 #include "graphics/Color.h"
 #include "graphics/Font.h"
 #include "graphics/FontFactory.h"
