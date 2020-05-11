@@ -24,5 +24,6 @@ class UiComponentContext
     ~UiComponentContext();
 
     GtkWidget * widget;
+    GtkWidget * fixedContainerWidget;
 };
 #endif /* UI_PRIVATE_LINUX_UICOMPONENTCONTEXT_H_ */
