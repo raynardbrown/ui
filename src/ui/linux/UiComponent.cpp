@@ -29,3 +29,16 @@
 #include "ui/private/UiComponentPrivate.h"
 
 #include "ui/UiComponent.h"
+
+void UiComponent::setLocation(int x, int y)
+{
+  dRoot->bounds->setLocation(x, y);
+
+  if(isInitialized())
+  {
+    gtk_fixed_put(GTK_FIXED(getUiComponentContext()->fixedContainerWidget),
+                  GTK_WIDGET(getUiComponentContext()->widget),
+                  getX(),
+                  getY());
+  }
+}
