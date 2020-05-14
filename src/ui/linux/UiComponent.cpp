@@ -24,6 +24,7 @@
 #include "ui/layout/Padding.h"
 #include "ui/layout/ILayout.h"
 
+#include "ui/private/linux/UiComponentContext.h"
 #include "ui/private/DefaultFocusImpl.h"
 #include "ui/private/IdManager.h"
 #include "ui/private/UiComponentPrivate.h"
