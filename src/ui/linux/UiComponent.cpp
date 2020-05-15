@@ -43,3 +43,25 @@ void UiComponent::setLocation(int x, int y)
                   getY());
   }
 }
+
+void UiComponent::setBounds(int x, int y, int width, int height)
+{
+  dRoot->bounds->setBounds(x, y, width, height);
+
+  if(isInitialized())
+  {
+    gtk_widget_set_size_request(GTK_WIDGET(getUiComponentContext()->widget),
+                                getWidth(),
+                                getHeight());
+
+    gtk_fixed_put(GTK_FIXED(getUiComponentContext()->fixedContainerWidget),
+                  GTK_WIDGET(getUiComponentContext()->widget),
+                  getX(),
+                  getY());
+
+    // TODO: Update the client area accordingly
+
+    // Update your layout because your size changed
+    doLayout();
+  }
+}
