@@ -47,8 +47,7 @@ if (MSVC)
     
     list(APPEND Sources ${Sources_Windows})
 else()
-    # fail until we target more platforms
-    message(FATAL_ERROR "compiler not supported")
+    add_compile_options(-Wall -Wextra -pedantic -std=c++11)
 endif()
 
 if (MSVC)
