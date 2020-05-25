@@ -51,13 +51,15 @@ else()
     message(FATAL_ERROR "compiler not supported")
 endif()
 
-find_path(STRING_EXTRAS_INCLUDE NAMES string/extras/CharacterEncoder.h PATH_SUFFIXES string_extras/inc)
+if (MSVC)
+  find_path(STRING_EXTRAS_INCLUDE NAMES string/extras/CharacterEncoder.h PATH_SUFFIXES string_extras/inc)
 
-if(NOT STRING_EXTRAS_INCLUDE)
-  message(FATAL_ERROR "string extras headers not found")
+  if(NOT STRING_EXTRAS_INCLUDE)
+    message(FATAL_ERROR "string extras headers not found")
+  endif()
+
+  list(APPEND Headers ${STRING_EXTRAS_INCLUDE})
 endif()
-
-list(APPEND Headers ${STRING_EXTRAS_INCLUDE})
 
 find_path(GRAPHICS_INCLUDE NAMES graphics/Font.h PATH_SUFFIXES graphics/inc)
 
@@ -67,13 +69,15 @@ endif()
 
 list(APPEND Headers ${GRAPHICS_INCLUDE})
 
-find_path(GRAPHICS_PRIVATE_INCLUDE NAMES graphics/private/windows/FontContext.h PATH_SUFFIXES graphics/src)
+if (MSVC)
+  find_path(GRAPHICS_PRIVATE_INCLUDE NAMES graphics/private/windows/FontContext.h PATH_SUFFIXES graphics/src)
 
-if(NOT GRAPHICS_PRIVATE_INCLUDE)
-  message(FATAL_ERROR "graphics private headers not found")
+  if(NOT GRAPHICS_PRIVATE_INCLUDE)
+    message(FATAL_ERROR "graphics private headers not found")
+  endif()
+
+  list(APPEND Headers ${GRAPHICS_PRIVATE_INCLUDE})
 endif()
-
-list(APPEND Headers ${GRAPHICS_PRIVATE_INCLUDE})
 
 find_path(UI_LAYOUT_INCLUDE NAMES ui/layout/ILayout.h PATH_SUFFIXES ui_layout/inc)
 
