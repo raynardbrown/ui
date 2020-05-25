@@ -75,7 +75,7 @@ endif()
 
 list(APPEND Headers ${GRAPHICS_PRIVATE_INCLUDE})
 
-find_path(UI_LAYOUT_INCLUDE NAMES ui/Layout/ILayout.h PATH_SUFFIXES ui_layout/inc)
+find_path(UI_LAYOUT_INCLUDE NAMES ui/layout/ILayout.h PATH_SUFFIXES ui_layout/inc)
 
 if(NOT UI_LAYOUT_INCLUDE)
   message(FATAL_ERROR "ui layout headers not found")
