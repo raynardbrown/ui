@@ -9,6 +9,12 @@ if(NOT Boost_FOUND)
   message(FATAL_ERROR "boost not found")
 endif()
 
+# Find gtk on the Linux platform
+if(NOT MSVC)
+  find_package(PkgConfig REQUIRED)
+  pkg_check_modules(GTK REQUIRED gtk+-2.0)
+endif()
+
 set(Headers "")
 list(APPEND Headers ${CMAKE_CURRENT_SOURCE_DIR}/inc)
 list(APPEND Headers ${CMAKE_CURRENT_SOURCE_DIR}/src)
@@ -88,4 +94,4 @@ list(APPEND Headers ${UI_LAYOUT_INCLUDE})
 
 add_library(${PROJECT_NAME} ${Sources})
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${Headers})
+target_include_directories(${PROJECT_NAME} PRIVATE ${Headers} ${GTK_INCLUDE_DIRS})
