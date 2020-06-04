@@ -55,7 +55,8 @@ if (MSVC)
 else()
     add_compile_options(-Wall -Wextra -pedantic -std=c++11)
 
-    set(Sources_Linux src/ui/linux/UiApplication.cpp)
+    set(Sources_Linux src/ui/linux/UiApplication.cpp
+                      src/ui/linux/UiComponent.cpp)
     
     list(APPEND Sources ${Sources_Linux})
 endif()
