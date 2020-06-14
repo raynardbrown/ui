@@ -21,6 +21,9 @@ class UiApplication
 
     UiApplication(int argc, char **argv);
 
+    /**
+     * Create a new UiApplication without a command line.
+     */
     UiApplication();
 
     ~UiApplication();
