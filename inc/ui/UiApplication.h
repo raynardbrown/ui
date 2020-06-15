@@ -19,6 +19,16 @@ class UiApplication
 {
   public:
 
+    /**
+     * Create a new UiApplication, initializing it with the specified command
+     * line.
+     *
+     * @param[in] argc the number of command line arguments in the specified
+     * array.
+     *
+     * @param[in] argv array of command line arguments provided to this
+     * UiApplication via the main function.
+     */
     UiApplication(int argc, char **argv);
 
     /**
