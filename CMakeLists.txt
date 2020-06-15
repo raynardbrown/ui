@@ -9,6 +9,12 @@ if(NOT Boost_FOUND)
   message(FATAL_ERROR "boost not found")
 endif()
 
+# Find gtk on the Linux platform
+if(NOT MSVC)
+  find_package(PkgConfig REQUIRED)
+  pkg_check_modules(GTK REQUIRED gtk+-2.0)
+endif()
+
 set(Headers "")
 list(APPEND Headers ${CMAKE_CURRENT_SOURCE_DIR}/inc)
 list(APPEND Headers ${CMAKE_CURRENT_SOURCE_DIR}/src)
@@ -47,17 +53,23 @@ if (MSVC)
     
     list(APPEND Sources ${Sources_Windows})
 else()
-    # fail until we target more platforms
-    message(FATAL_ERROR "compiler not supported")
+    add_compile_options(-Wall -Wextra -pedantic -std=c++11)
+
+    set(Sources_Linux src/ui/linux/UiApplication.cpp
+                      src/ui/linux/UiComponent.cpp)
+    
+    list(APPEND Sources ${Sources_Linux})
 endif()
 
-find_path(STRING_EXTRAS_INCLUDE NAMES string/extras/CharacterEncoder.h PATH_SUFFIXES string_extras/inc)
+if (MSVC)
+  find_path(STRING_EXTRAS_INCLUDE NAMES string/extras/CharacterEncoder.h PATH_SUFFIXES string_extras/inc)
 
-if(NOT STRING_EXTRAS_INCLUDE)
-  message(FATAL_ERROR "string extras headers not found")
+  if(NOT STRING_EXTRAS_INCLUDE)
+    message(FATAL_ERROR "string extras headers not found")
+  endif()
+
+  list(APPEND Headers ${STRING_EXTRAS_INCLUDE})
 endif()
-
-list(APPEND Headers ${STRING_EXTRAS_INCLUDE})
 
 find_path(GRAPHICS_INCLUDE NAMES graphics/Font.h PATH_SUFFIXES graphics/inc)
 
@@ -67,15 +79,17 @@ endif()
 
 list(APPEND Headers ${GRAPHICS_INCLUDE})
 
-find_path(GRAPHICS_PRIVATE_INCLUDE NAMES graphics/private/windows/FontContext.h PATH_SUFFIXES graphics/src)
+if (MSVC)
+  find_path(GRAPHICS_PRIVATE_INCLUDE NAMES graphics/private/windows/FontContext.h PATH_SUFFIXES graphics/src)
 
-if(NOT GRAPHICS_PRIVATE_INCLUDE)
-  message(FATAL_ERROR "graphics private headers not found")
+  if(NOT GRAPHICS_PRIVATE_INCLUDE)
+    message(FATAL_ERROR "graphics private headers not found")
+  endif()
+
+  list(APPEND Headers ${GRAPHICS_PRIVATE_INCLUDE})
 endif()
 
-list(APPEND Headers ${GRAPHICS_PRIVATE_INCLUDE})
-
-find_path(UI_LAYOUT_INCLUDE NAMES ui/Layout/ILayout.h PATH_SUFFIXES ui_layout/inc)
+find_path(UI_LAYOUT_INCLUDE NAMES ui/layout/ILayout.h PATH_SUFFIXES ui_layout/inc)
 
 if(NOT UI_LAYOUT_INCLUDE)
   message(FATAL_ERROR "ui layout headers not found")
@@ -85,4 +99,4 @@ list(APPEND Headers ${UI_LAYOUT_INCLUDE})
 
 add_library(${PROJECT_NAME} ${Sources})
 
-target_include_directories(${PROJECT_NAME} PRIVATE ${Headers})
+target_include_directories(${PROJECT_NAME} PRIVATE ${Headers} ${GTK_INCLUDE_DIRS})

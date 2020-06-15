@@ -12,6 +12,8 @@
 
 #ifdef _WIN32
 #include "ui/private/windows/ButtonPrivate.h"
+#else
+#include "ui/private/linux/ButtonPrivate.h"
 #endif
 
 #include "ui/Button.h"
