@@ -20,6 +20,7 @@
 #include "ui/private/UiComponentPrivate.h"
 
 class Menu;
+class MenuBar;
 
 class MenuBarPrivate : public UiComponentPrivate
 {
